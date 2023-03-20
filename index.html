@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJs Introduction</title>
+    <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet"  href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <article>
+          <h2>RENTAL APPLICATION FORM</h2>
+          <header>
+            <div class="short_progress">
+              {{ activeStep + 1 }} of {{ formSteps.length }}
+            </div>
+            <div class="progress">
+              <div class="progress-step"
+                  :class="{'active': index === activeStep}"
+                  v-for="(step, index) in formSteps"
+                  :key="'step'+index">
+                {{ index + 1 }}
+              </div>
+            </div>
+          </header>
+          <!-- <container> -->
+            <section :class="animation">
+              <h2>{{ formSteps[activeStep].title }}</h2>
+              <div class="input-fields">
+                <div class="input-container"
+                    v-for="(field, index) in formSteps[activeStep].fields" :key="'field'+index">
+                  <input type="text" :class="{'wrong-input': !field.valid}" v-model="field.value" required />
+                  <label class="input-label">{{ field.label }}</label>
+                </div>
+              </div>
+              <div class="actions">
+                <button v-if="activeStep > 0" @click="prevStep">prev</button>
+                <button v-if="activeStep + 1 < formSteps.length -1" @click="checkFields">next</button>
+                <button v-if="activeStep + 1 === formSteps.length -1" @click="checkFields">done</button>
+              </div>
+            </section>
+          <!-- </container> -->
+        </article>
+        <img src="https://s.zillowstatic.com/pfs/static/footer-art.svg" type="image/svg+xml" alt="Footer art" focusable="false" height="160" width="1200" class="pfs__kizoah-0 GYDLt">
+      </div>
+      <div class="wrapper">
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+      </div>
+    </div>
+    <script type = "text/javascript" src = "script.js"></script>
+  </body>
+</html>
